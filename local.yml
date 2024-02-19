@@ -37,3 +37,18 @@
       dest: ~/.bash_aliases
       owner: graham
       group: graham
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_velociraptor
+      dest: /etc/sudoers.d/velociraptor
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: velociraptor
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/grhervey/ansible.git
