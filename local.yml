@@ -1,0 +1,16 @@
+
+- hosts: localhost
+  connection: local
+  become: true
+  pre_tasts:
+    - name: pre-run | Update the system
+      tags: always
+      apt:
+        update_cache: yes
+      changed_when: false
+      when: ansible_distribution in ['Debian', 'Ubuntu']
+
+  tasks:
+  - name: install htop
+    package:
+      name: htop
