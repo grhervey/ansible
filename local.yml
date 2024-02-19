@@ -11,6 +11,29 @@
       when: ansible_distribution in ['Debian', 'Ubuntu']
 
   tasks:
-  - name: install htop
+  - name: install packages
     package:
-      name: htop
+      name: 
+        - htop
+        - vim
+        - tmux
+  - name: copy .bashrc file
+    copy:
+      src: files/bashrc
+      dest: ~/.bashrc
+      owner: graham
+      group: graham
+  
+  - name: copy .vimrc file
+    copy:
+      src: files/vimrc
+      dest: ~/.vimrc
+      owner: graham
+      group: graham
+
+  - name: copy .bash_aliases file
+    copy:
+      src: files/bash_aliases
+      dest: ~/.bash_aliases
+      owner: graham
+      group: graham
