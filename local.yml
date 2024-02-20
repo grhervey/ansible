@@ -13,9 +13,9 @@
   tasks:
       # - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
-      # - include: tasks/core-setup.yml
-      # - include: tasks/node-setup.yml
-      # - include: tasks/npm-packages.yml
+    - include: tasks/core-setup.yml
+    - include: tasks/node-setup.yml
+    - include: tasks/npm-packages.yml
       # - include: tasks/slack-setup.yml
       # - include: tasks/discord-setup.yml
       # - include: tasks/chrome-setup.yml
