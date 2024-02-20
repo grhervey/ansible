@@ -1,54 +1,29 @@
-
 - hosts: localhost
-  connection: local
-  become: true
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasts:
-    - name: pre-run | Update the system
-      tags: always
-      apt:
-        update_cache: yes
-      changed_when: false
-      when: ansible_distribution in ['Debian', 'Ubuntu']
-
+  - name: pre-run | Update the system
+    become: true
+    apt:
+      update_cache: true
+      force_apt_get: true
+    tags: 
+      - install
+      - core
   tasks:
-  - name: install packages
-    package:
-      name: 
-        - htop
-        - vim
-        - tmux
-  - name: copy .bashrc file
-    copy:
-      src: files/bashrc
-      dest: ~/.bashrc
-      owner: graham
-      group: graham
-  
-  - name: copy .vimrc file
-    copy:
-      src: files/vimrc
-      dest: ~/.vimrc
-      owner: graham
-      group: graham
+    -  include: tasks/ssh.yml
+    -  include: tasks/git-setup.yml
+    -  include: tasks/core-setup.yml
+    -  include: tasks/node-setup.yml
+    -  include: tasks/npm-packages.yml
+    -  include: tasks/slack-setup.yml
+    -  include: tasks/discord-setup.yml
+    -  include: tasks/chorme-setup.yml
+      # -  include: tasks/beekeeper-setup.yml
+      # -  include: tasks/insomnia-setup.yml
+      # -  include: tasks/obsidian-setup.yml
+      # -  include: tasks/personal-projects.yml
+      #-  include: tasks/dotfiles-setup.yml
 
-  - name: copy .bash_aliases file
-    copy:
-      src: files/bash_aliases
-      dest: ~/.bash_aliases
-      owner: graham
-      group: graham
-
-  - name: set up sudo for ansible user
-    copy:
-      src: files/sudoer_velociraptor
-      dest: /etc/sudoers.d/velociraptor
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: velociraptor
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/grhervey/ansible.git
