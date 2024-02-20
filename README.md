@@ -15,3 +15,4 @@ still need to set up:
 	1password
 	dotfiles
 	securety for work
+	obsidian
