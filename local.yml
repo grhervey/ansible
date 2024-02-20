@@ -21,4 +21,4 @@
     - include: tasks/npm-packages.yml
     - include: tasks/slack-setup.yml
     - include: tasks/discord-setup.yml
-    - include: tasks/chorme-setup.yml
+    - include: tasks/chrome-setup.yml
