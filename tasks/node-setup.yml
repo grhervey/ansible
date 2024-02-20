@@ -33,14 +33,14 @@
 
 - name: Install N
   npm:
-    name: n stable
+    name: n
     global: yes
   tags:
     - install
     - node
 
 - name: Install correct version of Node
-  shell: n stable
+  shell: n 20
   tags:
     - install
     - node
