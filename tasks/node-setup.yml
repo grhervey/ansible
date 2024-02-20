@@ -40,7 +40,7 @@
     - node
 
 - name: Install correct version of Node
-  shell: n latest
+  shell: n 14
   tags:
     - install
     - node
