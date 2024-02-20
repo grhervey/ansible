@@ -3,27 +3,22 @@
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
     personal: "{{ lookup('env', 'HOME') }}/personal"
-  pre_tasts:
-  - name: pre-run | Update the system
+  pre_tasks:
+  - name: Update Apt
     become: true
     apt:
-      update_cache: true
       force_apt_get: true
-    tags: 
+      update_cache: true
+      state: present
+    tags:
       - install
       - core
   tasks:
-    -  include: tasks/ssh.yml
-    -  include: tasks/git-setup.yml
-    -  include: tasks/core-setup.yml
-    -  include: tasks/node-setup.yml
-    -  include: tasks/npm-packages.yml
-    -  include: tasks/slack-setup.yml
-    -  include: tasks/discord-setup.yml
-    -  include: tasks/chorme-setup.yml
-      # -  include: tasks/beekeeper-setup.yml
-      # -  include: tasks/insomnia-setup.yml
-      # -  include: tasks/obsidian-setup.yml
-      # -  include: tasks/personal-projects.yml
-      #-  include: tasks/dotfiles-setup.yml
-
+    - include: tasks/ssh.yml
+    - include: tasks/git-setup.yml
+    - include: tasks/core-setup.yml
+    - include: tasks/node-setup.yml
+    - include: tasks/npm-packages.yml
+    - include: tasks/slack-setup.yml
+    - include: tasks/discord-setup.yml
+    - include: tasks/chorme-setup.yml
