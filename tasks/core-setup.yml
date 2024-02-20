@@ -10,7 +10,7 @@
 - name: Install System Packages 2 (the rest)
   become: true
   apt:
-    name: [ "curl", "htop", "golang", "lsof", "python3-pip"]
+    name: [ "curl", "htop", "golang", "lsof", "python3-pip", "kubectl"]
   tags:
     - install
     - core
