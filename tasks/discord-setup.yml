@@ -1,8 +1,7 @@
 - name: Download Discord .deb package
   get_url:
     url: "https://discord.com/api/download?platform=linux&format=deb"
-    dest: /tmp/disord.deb
-    mode: '777'
+    dest: /tmp/discord.deb
   tags:
     - install
     - discord
