@@ -1,6 +1,6 @@
 - name: Download Slack .deb package
   get_url:
-    url: "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.19.2-amd64.deb"
+    url: "https://downloads.slack-edge.com/releases/linux/4.36.140/prod/x64/slack-desktop-4.36.140-amd64.deb"
     dest: /tmp/slack.deb
   tags:
     - install
