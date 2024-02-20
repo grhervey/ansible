@@ -33,7 +33,7 @@
 
 - name: Install N
   npm:
-    name: n
+    name: n stable
     global: yes
   tags:
     - install
