@@ -6,3 +6,7 @@ sudo apt update && sudo apt upgrade
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt update
 sudo apt install -y ansible
+ 
+we still need to figure out the ssh keys
+there is an issue when adding the npm to the path and that creates problems of installing specific version with n
+
