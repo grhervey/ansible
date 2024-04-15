@@ -5,6 +5,7 @@
     value: "graham.hervey@gmail.com"
   tags:
   - git-personal
+
 - name: Git personal setup name
   git_config:
     name: user.name
@@ -12,13 +13,15 @@
     value: "GrHervey"
   tags:
   - git-personal
-- name: clutch
+
+- name: Clutch
   git_config:
     name: user.email
     scope: global
     value: "graham.hervey@24g.com"
   tags:
   - git-clutch
+
 - name: Git clutch setup name
   git_config:
     name: user.name

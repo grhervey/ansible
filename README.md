@@ -12,6 +12,7 @@ there is an issue when adding the npm to the path and that creates problems of i
 
 still need to set up:
 	kubernetes
+		'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
 	1password
 	dotfiles
 	securety for work
